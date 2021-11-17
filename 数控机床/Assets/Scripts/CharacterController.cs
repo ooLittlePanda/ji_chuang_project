@@ -31,6 +31,7 @@ public class CharacterController : MonoBehaviour
                 targetSpeed = (this.transform.forward * input.Kup + this.transform.right * input.Kright) * speed;
             }
         }
-        rigid.velocity = Vector3.SmoothDamp(rigid.velocity, targetSpeed, ref moveDampSpeed, smoothTime);
+        //rigid.velocity = Vector3.SmoothDamp(rigid.velocity, targetSpeed, ref moveDampSpeed, smoothTime);
+        rigid.velocity = targetSpeed;
     }
 }
