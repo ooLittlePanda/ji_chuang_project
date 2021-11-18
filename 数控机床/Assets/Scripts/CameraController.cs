@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
         cameraInitPosition = this.transform.position;
         shakeDist = 0;
     }
-    void Update()
+    void LateUpdate()
     {
         if (Signal.mouseEnable)
         {
@@ -51,7 +51,7 @@ public class CameraController : MonoBehaviour
             }
             else
             {
-                shakeDist -= Time.deltaTime * shakeSpeed;
+                shakeDist -= 2*Time.deltaTime * shakeSpeed;
                 if (shakeDist <= 0) shakeDist = 0;
             }
 
