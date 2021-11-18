@@ -4,8 +4,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(Collider))]
-public class MatChange : MonoBehaviour
+public class InteractiveObject: MonoBehaviour
 {
+    public int interactStage = 0;
+    public bool interactable = true;
+    public bool interactChange = false;
     private MeshRenderer meshRenderer;
 
     [SerializeField]
@@ -23,9 +26,26 @@ public class MatChange : MonoBehaviour
     {
         player = FindObjectOfType<CharacterController>().gameObject;
         meshRenderer = this.GetComponent<MeshRenderer>();
+        interactable = true;
+        interactChange = false;
         EnableHighLight(false);
     }
 
+    private void Update()
+    {
+        if(Signal.Stage!=interactStage)
+        {
+            interactable = false;
+        }
+        else
+        {
+            if(interactChange == false)
+            {
+                Debug.Log(this.gameObject.name);
+                interactable = true;
+            }
+        }
+    }
     private void EnableHighLight(bool on_off)
     {
         if(meshRenderer!=null&&originMat!=null&&highLightMat!=null)
@@ -43,11 +63,27 @@ public class MatChange : MonoBehaviour
 
     private void OnMouseOver()
     {
-        EnableHighLight(true);
+        if(interactable)
+        {
+            EnableHighLight(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                interactable = !interactable;
+                Signal.stageComplete[interactStage]++;
+                interactChange = true;
+            }
+        }
+        else
+        {
+            EnableHighLight(false);
+        }
     }
 
     private void OnMouseExit()
     {
-        EnableHighLight(false);
+        if (interactable)
+        {
+            EnableHighLight(false);
+        }
     }
 }

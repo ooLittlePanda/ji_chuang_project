@@ -18,22 +18,17 @@ public class KMInput : MonoBehaviour
     public float minmouseY = -80;
     public float maxmouseY = 80;
 
-    public bool inputEnable = true;
-    public bool mouseEnable = true;
-    public bool keyboardEnable = true;
-    public bool Move;
-
     private void Update()
     {
-        if (inputEnable)
+        if (Signal.inputEnable)
         {
             Mup = Input.GetAxis("Mouse Y") * mouseSensitivityY;
             Mright = Input.GetAxis("Mouse X") * mouseSensitivityX;
                 
             Kup = (Input.GetKey(keyUp) ? 1.0f : 0.0f) - (Input.GetKey(keyDown) ? 1.0f : 0.0f);
             Kright = (Input.GetKey(keyRight) ? 1.0f : 0.0f) - (Input.GetKey(keyLeft) ? 1.0f : 0.0f);
-            if (Kup != 0 || Kright != 0) Move = true;
-            else Move = false;
+            if (Kup != 0 || Kright != 0) Signal.Move = true;
+            else Signal.Move = false;
         }
     }
 }

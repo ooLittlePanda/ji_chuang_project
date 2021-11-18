@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject cameraHandle;
+    public GameObject myCamera;
+    private GameObject player;
     public KMInput input;
     public float shakeMaxDist = 5.0f;
     public float shakeSpeed = 3.0f;
@@ -20,30 +21,28 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        player = this.gameObject.transform.parent.gameObject;
         //Cursor.visible = false;
     }
     private void Start()
     {
-        PlayerToCamera = cameraHandle.transform.position - this.transform.position;
+        PlayerToCamera = player.transform.position - this.transform.position;
         cameraInitPosition = this.transform.position;
         shakeDist = 0;
     }
     void Update()
     {
-        if (input.mouseEnable)
+        if (Signal.mouseEnable)
         {
             RotationX += input.Mright;
             RotationY -= input.Mup;
             RotationY = Mathf.Clamp(RotationY, input.minmouseY, input.maxmouseY);
         }
 
-        this.transform.eulerAngles = new Vector3(RotationY, RotationX, 0);
-        cameraHandle.transform.localEulerAngles = new Vector3(0, RotationX, 0);
+        myCamera.transform.localEulerAngles = new Vector3(RotationY, RotationX, 0);
+        player.transform.localEulerAngles = new Vector3(0, RotationX, 0);
 
-        Debug.Log(shakeUp);
-        Debug.Log("shakeDist:" + shakeDist);
-        Debug.Log("shakeMaxDist" + shakeMaxDist);
-        if(input.Move)
+        if(Signal.Move)
         {
             if (shakeUp)
             {
@@ -60,6 +59,6 @@ public class CameraController : MonoBehaviour
             else if (shakeDist <= 0) shakeUp = true;
         }
 
-        this.transform.position = cameraHandle.transform.position - PlayerToCamera + new Vector3(0, shakeDist, 0);
+        myCamera.transform.position = this.transform.position + PlayerToCamera + new Vector3(0, shakeDist, 0);
     }
 }
