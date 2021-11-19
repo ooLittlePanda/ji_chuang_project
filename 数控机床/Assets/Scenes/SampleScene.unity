@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 50224054}
   - component: {fileID: 50224055}
   m_Layer: 0
-  m_Name: InteractiveObjList
+  m_Name: StagesCtrl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,9 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0735b049b902544dbc77aaad8519d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageName:
-  - Stage0
-  - Stage1
+  stages:
+  - {fileID: 1992003185}
+  - {fileID: 804599507}
 --- !u!1 &150367858
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactStage: 0
   interactable: 1
-  interactChange: 1
+  interactComplete: 0
   originMat: {fileID: 2100000, guid: 3812c9ebc42960c458d902aa3448b37b, type: 2}
   highLightMat: {fileID: 2100000, guid: 88b7a98faad00794bb3e020e708c7a9a, type: 2}
   distance: 4
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactStage: 1
   interactable: 1
-  interactChange: 1
+  interactComplete: 0
   originMat: {fileID: 2100000, guid: 55d9b1ebbf73c914db4d96ab45d5ea78, type: 2}
   highLightMat: {fileID: 2100000, guid: aab172f6a047c0b4f99e00dc55cde4f7, type: 2}
   distance: 4
@@ -819,7 +819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactStage: 0
   interactable: 1
-  interactChange: 0
+  interactComplete: 0
   originMat: {fileID: 2100000, guid: c6dbcd2bebc3b6745836c219b8c3006b, type: 2}
   highLightMat: {fileID: 2100000, guid: 65ddee0fe2562f34ca3b4ff7f2280eeb, type: 2}
   distance: 4
@@ -880,6 +880,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 804599506}
+  - component: {fileID: 804599507}
   m_Layer: 0
   m_Name: Stage1
   m_TagString: Untagged
@@ -902,6 +903,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &804599507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804599505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fb384edd2d14645aba9a06dd095e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageComplete: 0
+  stageName: 
+  interactObjs: []
 --- !u!1 &846147814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +1968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1992003184}
+  - component: {fileID: 1992003185}
   m_Layer: 0
   m_Name: Stage0
   m_TagString: Untagged
@@ -1975,6 +1992,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1992003185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992003183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fb384edd2d14645aba9a06dd095e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageComplete: 0
+  stageName: 
+  interactObjs: []
 --- !u!1 &2068502480
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,11 +12,10 @@ public static class Signal
     [Header("-----Interact Signal-----")]
     public static bool Move = false;
     public static bool Death = false;
-    public static string deathType;
     public static bool interactive = true;
 
     [Header("-----Stage Signal-----")]
-    public static int Stage = 0;
+    public static int currentStage = 0;
     private static int minStage = 0;
     private static int maxStage = 1;
     private static int stageCount = 2;

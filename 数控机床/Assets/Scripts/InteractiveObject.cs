@@ -8,7 +8,7 @@ public class InteractiveObject: MonoBehaviour
 {
     public int interactStage = 0;
     public bool interactable = true;
-    public bool interactChange = false;
+    public bool interactComplete = false;
     private MeshRenderer meshRenderer;
 
     [SerializeField]
@@ -27,19 +27,19 @@ public class InteractiveObject: MonoBehaviour
         player = FindObjectOfType<CharacterController>().gameObject;
         meshRenderer = this.GetComponent<MeshRenderer>();
         interactable = true;
-        interactChange = false;
+        interactComplete = false;
         EnableHighLight(false);
     }
 
     private void Update()
     {
-        if(Signal.Stage!=interactStage)
+        if(Signal.currentStage!=interactStage)
         {
             interactable = false;
         }
         else
         {
-            if(interactChange == false)
+            if(interactComplete == false)
             {
                 interactable = true;
             }
@@ -69,7 +69,7 @@ public class InteractiveObject: MonoBehaviour
             {
                 interactable = !interactable;
                 Signal.stageComplete[interactStage]++;
-                interactChange = true;
+                interactComplete = true;
             }
         }
         else
