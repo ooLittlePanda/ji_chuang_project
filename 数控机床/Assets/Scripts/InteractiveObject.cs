@@ -41,7 +41,6 @@ public class InteractiveObject: MonoBehaviour
         {
             if(interactChange == false)
             {
-                Debug.Log(this.gameObject.name);
                 interactable = true;
             }
         }
