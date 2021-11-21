@@ -145,7 +145,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50224052}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.6584911, y: 0.9015199, z: -4.414105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2b435db9a927e41b626033a9606434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactStage: 1
+  interactStage: 0
   interactable: 1
   interactComplete: 0
   originMat: {fileID: 2100000, guid: 55d9b1ebbf73c914db4d96ab45d5ea78, type: 2}
@@ -912,12 +912,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 804599505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64fb384edd2d14645aba9a06dd095e6e, type: 3}
+  m_Script: {fileID: 11500000, guid: b55f26a0f389e8e43a3dc9eeb4257162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRebirthPosition: {x: 0, y: 0, z: 0}
+  playerRebirthAngle: {x: 0, y: 0, z: 0}
+  stage: 1
   stageComplete: 0
   stageName: 
   interactObjs: []
+  expectInteractObjsNum: 1
+  hasInteractedNum: 0
 --- !u!1 &846147814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,7 +1392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599658715}
   m_LocalRotation: {x: -0.0048077945, y: 0.020410325, z: -0.000098542776, w: -0.9997801}
-  m_LocalPosition: {x: -5.85, y: 2.592, z: -1.348}
+  m_LocalPosition: {x: -5.85, y: 2.65, z: -1.35}
   m_LocalScale: {x: 1, y: 0.7342081, z: 1}
   m_Children:
   - {fileID: 1621307286}
@@ -1406,7 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e193c0e25ecb0d4790badbc408ec1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   input: {fileID: 1565953820}
   smoothTime: 0.1
 --- !u!54 &1599658720
@@ -2001,12 +2006,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1992003183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64fb384edd2d14645aba9a06dd095e6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4de05d0584f57824396fe4da3193f626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRebirthPosition: {x: 0, y: 0, z: 0}
+  playerRebirthAngle: {x: 0, y: 0, z: 0}
+  stage: 0
   stageComplete: 0
   stageName: 
   interactObjs: []
+  expectInteractObjsNum: 2
+  hasInteractedNum: 0
 --- !u!1 &2068502480
 GameObject:
   m_ObjectHideFlags: 0

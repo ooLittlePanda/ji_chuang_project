@@ -18,8 +18,12 @@ public static class Signal
     public static int currentStage = 0;
     private static int minStage = 0;
     private static int maxStage = 1;
-    private static int stageCount = 2;
-    public static int[] stageComplete = new int[stageCount];
+    public static GameObject interactingObj;
+
+    public static GameObject player;
+    public static GameObject playerCamera;
+
+    //public static int[] stageComplete = new int[stageCount];
 
     public static int MinStage
     {
@@ -34,14 +38,6 @@ public static class Signal
         get
         {
             return maxStage;
-        }
-    }
-
-    public static int StageCount
-    {
-        get
-        {
-            return stageCount;
         }
     }
 }
