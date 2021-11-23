@@ -6,6 +6,7 @@ public class stageCtrl : MonoBehaviour
 {
     public Vector3 playerRebirthPosition;
     public Quaternion playerRebirthAngle;
+    public string deathType;        
 
     [SerializeField]
     public int stage = 0;
@@ -13,12 +14,11 @@ public class stageCtrl : MonoBehaviour
     public bool stageComplete = false;
     [SerializeField]
     protected string stageName;
-    [SerializeField]
-    protected List<InteractiveObject> interactObjs;
+
+    public List<InteractiveObject> interactObjs;
     [SerializeField]
     protected int expectInteractObjsNum = 0;
-    [SerializeField]
-    protected int hasInteractedNum = 0;
+    public int hasInteractedNum = 0;
     private void Start()
     {
         stageName = this.gameObject.name;
@@ -35,13 +35,27 @@ public class stageCtrl : MonoBehaviour
         }
     }
 
-    protected void Rebirth()
+
+    public void Rebirth()
     {
         Signal.player.transform.position = playerRebirthPosition;
         Signal.player.transform.rotation = playerRebirthAngle;
         Signal.playerCamera.transform.rotation = Quaternion.identity;
         stageComplete = false;
-        foreach(var obj in interactObjs)
+        resetInteract();
+    }
+
+    public void cantInteract()
+    {
+        for(int i = hasInteractedNum;i<interactObjs.Count;i++)
+        {
+            interactObjs[i].interactable = false;
+        }
+    }
+
+    private void resetInteract()
+    {
+        foreach (var obj in interactObjs)
         {
             obj.interactable = true;
             obj.interactComplete = false;

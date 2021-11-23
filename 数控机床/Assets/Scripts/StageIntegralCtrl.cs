@@ -5,13 +5,17 @@ using UnityEngine;
 public class StageIntegralCtrl : MonoBehaviour
 {
     [SerializeField]
-    stageCtrl[] stages;
+    public stageCtrl[] stages;
 
+    private void Awake()
+    {
+        Signal.player = FindObjectOfType<CharacterController>().gameObject;
+        Signal.playerCamera = FindObjectOfType<Camera>().gameObject;
+        Signal.cameraAnim = FindObjectOfType<Camera>().gameObject.GetComponent<Animator>();
+    }
     private void Start()
     {
         Signal.currentStage = Signal.MinStage;
-        Signal.player = FindObjectOfType<CharacterController>().gameObject;
-        Signal.playerCamera = FindObjectOfType<Camera>().gameObject;
         stages[0].playerRebirthPosition = Signal.player.transform.position;
         stages[0].playerRebirthAngle = Signal.player.transform.rotation;
     }

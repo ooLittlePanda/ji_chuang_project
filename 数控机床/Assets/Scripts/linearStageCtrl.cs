@@ -16,7 +16,6 @@ public class linearStageCtrl : stageCtrl
             }
             if (Signal.interactingObj != null)
             {
-                Debug.Log(Signal.interactingObj);
                 if (Signal.interactingObj == interactObjs[theoryInteractObj].gameObject)
                 {
                     theoryInteractObj++;
@@ -24,7 +23,9 @@ public class linearStageCtrl : stageCtrl
                 }
                 else
                 {
-                    Rebirth();
+                    Signal.death = true;
+                    Signal.cantInput();
+                    cantInteract();
                     hasInteractedNum = 0;
                     theoryInteractObj = 0;
                 }

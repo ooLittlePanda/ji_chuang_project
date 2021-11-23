@@ -8,6 +8,7 @@ public static class Signal
     public static bool inputEnable = true;
     public static bool mouseEnable = true;
     public static bool keyboardEnable = true;
+    public static bool death = false;
 
     [Header("-----Interact Signal-----")]
     public static bool Move = false;
@@ -22,8 +23,7 @@ public static class Signal
 
     public static GameObject player;
     public static GameObject playerCamera;
-
-    //public static int[] stageComplete = new int[stageCount];
+    public static Animator cameraAnim;
 
     public static int MinStage
     {
@@ -39,5 +39,19 @@ public static class Signal
         {
             return maxStage;
         }
+    }
+
+    public static void cantInput()
+    {
+        inputEnable = false;
+        mouseEnable = false;
+        keyboardEnable = false;
+    }
+
+    public static void canInput()
+    {
+        inputEnable = true;
+        mouseEnable = true;
+        keyboardEnable = true;
     }
 }
