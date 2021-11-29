@@ -8,19 +8,22 @@ public static class Signal
     public static bool inputEnable = true;
     public static bool mouseEnable = true;
     public static bool keyboardEnable = true;
+    public static bool death = false;
 
     [Header("-----Interact Signal-----")]
     public static bool Move = false;
     public static bool Death = false;
-    public static string deathType;
     public static bool interactive = true;
 
     [Header("-----Stage Signal-----")]
-    public static int Stage = 0;
+    public static int currentStage = 0;
     private static int minStage = 0;
     private static int maxStage = 1;
-    private static int stageCount = 2;
-    public static int[] stageComplete = new int[stageCount];
+    public static GameObject interactingObj;
+
+    public static GameObject player;
+    public static GameObject playerCamera;
+    public static Animator cameraAnim;
 
     public static int MinStage
     {
@@ -38,11 +41,17 @@ public static class Signal
         }
     }
 
-    public static int StageCount
+    public static void cantInput()
     {
-        get
-        {
-            return stageCount;
-        }
+        inputEnable = false;
+        mouseEnable = false;
+        keyboardEnable = false;
+    }
+
+    public static void canInput()
+    {
+        inputEnable = true;
+        mouseEnable = true;
+        keyboardEnable = true;
     }
 }

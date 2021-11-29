@@ -32,33 +32,32 @@ public class CameraController : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (Signal.mouseEnable)
+        if (Signal.inputEnable)
         {
             RotationX += input.Mright;
             RotationY -= input.Mup;
             RotationY = Mathf.Clamp(RotationY, input.minmouseY, input.maxmouseY);
-        }
+            myCamera.transform.localEulerAngles = new Vector3(RotationY, RotationX, 0);
+            player.transform.localEulerAngles = new Vector3(0, RotationX, 0);
 
-        myCamera.transform.localEulerAngles = new Vector3(RotationY, RotationX, 0);
-        player.transform.localEulerAngles = new Vector3(0, RotationX, 0);
-
-        if(Signal.Move)
-        {
-            if (shakeUp)
+            if (Signal.Move)
             {
-                shakeDist += Time.deltaTime * shakeSpeed;
-                if (shakeDist >= shakeMaxDist) shakeDist = shakeMaxDist;
-            }
-            else
-            {
-                shakeDist -= 2*Time.deltaTime * shakeSpeed;
-                if (shakeDist <= 0) shakeDist = 0;
+                if (shakeUp)
+                {
+                    shakeDist += Time.deltaTime * shakeSpeed;
+                    if (shakeDist >= shakeMaxDist) shakeDist = shakeMaxDist;
+                }
+                else
+                {
+                    shakeDist -= 2 * Time.deltaTime * shakeSpeed;
+                    if (shakeDist <= 0) shakeDist = 0;
+                }
+
+                if (shakeDist >= shakeMaxDist) shakeUp = false;
+                else if (shakeDist <= 0) shakeUp = true;
             }
 
-            if (shakeDist >= shakeMaxDist) shakeUp = false;
-            else if (shakeDist <= 0) shakeUp = true;
+            myCamera.transform.position = this.transform.position + PlayerToCamera + new Vector3(0, shakeDist, 0);
         }
-
-        myCamera.transform.position = this.transform.position + PlayerToCamera + new Vector3(0, shakeDist, 0);
     }
 }

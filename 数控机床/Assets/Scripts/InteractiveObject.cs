@@ -6,9 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class InteractiveObject: MonoBehaviour
 {
-    public int interactStage = 0;
+    [SerializeField]
+    private int interactStage = 0;
     public bool interactable = true;
-    public bool interactChange = false;
+    public bool interactComplete = false;
     private MeshRenderer meshRenderer;
 
     [SerializeField]
@@ -19,38 +20,34 @@ public class InteractiveObject: MonoBehaviour
 
     [SerializeField]
     private float distance = 4.0f;
-
-    private GameObject player;
-
     private void Start()
     {
-        player = FindObjectOfType<CharacterController>().gameObject;
+        interactStage = this.transform.parent.gameObject.GetComponent<stageCtrl>().stage;
         meshRenderer = this.GetComponent<MeshRenderer>();
         interactable = true;
-        interactChange = false;
+        interactComplete = false;
         EnableHighLight(false);
     }
 
     private void Update()
     {
-        if(Signal.Stage!=interactStage)
+        if(Signal.currentStage!=interactStage)
         {
             interactable = false;
         }
         else
         {
-            if(interactChange == false)
+            if(interactComplete == false)
             {
-                Debug.Log(this.gameObject.name);
                 interactable = true;
             }
         }
     }
-    private void EnableHighLight(bool on_off)
+    protected void EnableHighLight(bool on_off)
     {
         if(meshRenderer!=null&&originMat!=null&&highLightMat!=null)
         {
-            if(Vector3.Distance(this.transform.position,player.transform.position)<distance)
+            if(Vector3.Distance(this.transform.position,Signal.player.transform.position)<distance)
             {
                 meshRenderer.material = on_off ? highLightMat : originMat;
             }
@@ -69,8 +66,9 @@ public class InteractiveObject: MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 interactable = !interactable;
-                Signal.stageComplete[interactStage]++;
-                interactChange = true;
+                interactComplete = true;
+                Signal.interactingObj = this.gameObject;
+
             }
         }
         else
