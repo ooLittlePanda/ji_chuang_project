@@ -94,7 +94,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7871645371136094926
 Transform:
@@ -121,11 +121,11 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.9907744, g: 1, b: 0.8820755, a: 1}
-  m_Intensity: 5
-  m_Range: 4
-  m_SpotAngle: 126.97517
-  m_InnerSpotAngle: 66.50642
+  m_Color: {r: 0.9481132, g: 0.99827045, b: 1, a: 1}
+  m_Intensity: 3
+  m_Range: 5.104
+  m_SpotAngle: 150.7741
+  m_InnerSpotAngle: 87.990265
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -164,12 +164,12 @@ Light:
   m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 4
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 5.2325337e+35, z: NaN, w: NaN}
   m_UseBoundingSphereOverride: 0
-  m_ShadowRadius: 0
+  m_ShadowRadius: 0.1
   m_ShadowAngle: 0
 --- !u!1 &8483039108023956366
 GameObject:
@@ -187,7 +187,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967294
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8705069819869250730
 Transform:
